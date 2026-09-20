@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ASTS Bahasa Indonesia Kelas VIII - CBT Aman</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .font-mono-num {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    /* Mencegah seleksi teks dan drag gambar */
+    * {
+      -webkit-touch-callout: none;
+    }
+    @keyframes pulse-red {
+      0%, 100% { background-color: rgba(239, 68, 68, 0.1); }
+      50% { background-color: rgba(239, 68, 68, 0.3); }
+    }
+    .danger-pulse {
+      animation: pulse-red 1.5s infinite;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between antialiased">
+
+  <header class="bg-indigo-900 text-white shadow-md sticky top-0 z-30 border-b border-indigo-950/40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <!-- Logo Sekolah Kecil dengan Fallback -->
+        <div class="w-10 h-10 rounded-xl overflow-hidden bg-white/10 p-0.5 border border-white/20 flex items-center justify-center flex-shrink-0 shadow">
+          <img src="https://i.imgur.com/0kwowtD.png" alt="Logo Sekolah" 
+            onerror="this.onerror=null; this.src='https://placehold.co/80x80/4338ca/ffffff?text=SMP';" 
+            class="w-full h-full object-contain">
+        </div>
+        <div>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight leading-tight flex items-center gap-2">
+            ASTS GANJIL BAHASA INDONESIA
+            <span class="bg-indigo-700 text-indigo-200 text-xs px-2 py-0.5 rounded-full font-semibold">Kelas VIII</span>
+          </h1>
+          <p class="text-xs text-indigo-200 hidden sm:block">Sistem Asesmen Terkunci & Anti-Kecurangan</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Status Indikator Kejujuran -->
+        <div id="honestyBadge" class="hidden items-center gap-1.5 px-3 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 rounded-full text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Status: Jujur</span>
+        </div>
+
+        <!-- Indikator Google Sheet Terhubung Aktif -->
+        <div class="hidden sm:flex items-center gap-1.5 px-2.5 py-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 rounded-lg text-xs font-semibold">
+          <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+          <span>Sheet Aktif</span>
+        </div>
+
+        <!-- Tombol Buka Kode Google Apps Script (GS) Langsung -->
+        <button id="btnOpenSheetScript" title="Lihat Kode Google Apps Script (GS)" class="px-3 py-1.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg transition text-xs flex items-center gap-1.5 shadow-sm">
+          <svg class="w-4 h-4 text-indigo-950" fill="currentColor" viewBox="0 0 20 20"><path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z"/></svg>
+          <span class="font-extrabold">Kode GS Sheet</span>
+        </button>
+
+        <!-- Tombol Pengaturan Guru -->
+        <button id="btnOpenTeacherModal" title="Pengaturan Guru / Tautkan Web App URL" class="p-2 bg-indigo-800 hover:bg-indigo-700 text-indigo-200 hover:text-white rounded-lg transition text-xs flex items-center gap-1.5 border border-indigo-700">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <span class="hidden md:inline">Pengawas</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 flex flex-col justify-center items-center">
+
+    <!-- ============================================== -->
+    <!-- 1. TAHAP LOGIN / PRE-EXAM FORM -->
+    <!-- ============================================== -->
+    <div id="sectionRegistration" class="w-full max-w-2xl bg-white rounded-2xl shadow-xl border border-slate-200/80 overflow-hidden transition-all duration-300">
+      <div class="bg-gradient-to-r from-indigo-800 to-blue-700 p-6 text-white text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          <span class="inline-block bg-amber-400 text-indigo-950 text-xs font-black uppercase tracking-wider px-2.5 py-1 rounded-md mb-2">Tahun Ajaran 2026/2027</span>
+          <h2 class="text-2xl font-extrabold tracking-tight">Presensi & Persiapan Ujian</h2>
+          <p class="text-indigo-100 text-sm mt-1">Harap isi data dengan teliti dan jujur sebelum memulai ujian.</p>
+        </div>
+        <!-- Logo Sekolah Kecil di Banner Formulir -->
+        <div class="w-16 h-16 rounded-2xl bg-white p-1.5 flex items-center justify-center backdrop-blur-sm border border-white/30 shadow-md">
+          <img src="https://i.imgur.com/0kwowtD.png" alt="Logo Sekolah"
+            onerror="this.onerror=null; this.src='https://placehold.co/100x100/4338ca/ffffff?text=LOGO';"
+            class="w-full h-full object-contain">
+        </div>
+      </div>
+
+      <form id="formStudentRegistration" class="p-6 sm:p-8 space-y-5">
+        <!-- Peringatan Huruf Kapital -->
+        <div class="p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl flex items-start gap-3">
+          <svg class="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div class="text-xs sm:text-sm text-amber-900 leading-relaxed">
+            <strong class="font-bold">Ketentuan Pengisian:</strong> Nama <strong>WAJIB SESUAI PRESENSI</strong> dan diketik dengan <strong>HURUF KAPITAL</strong>. Sistem akan mengunci gawai pada mode layar penuh. Dilarang berpindah aplikasi selama ujian.
+          </div>
+        </div>
+
+        <div>
+          <label for="inputStudentName" class="block text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide mb-1">
+            Nama Lengkap Siswa <span class="text-rose-600">* (Huruf Kapital Otomatis)</span>
+          </label>
+          <div class="relative">
+            <input type="text" id="inputStudentName" required placeholder="CONTOH: AHMAD FAUZI RIDWAN" 
+              class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 outline-none uppercase font-semibold text-slate-800 transition">
+            <div class="absolute right-3 top-3.5 text-xs text-slate-400 font-mono">CAPS ON</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="selectStudentClass" class="block text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide mb-1">
+              Kelas <span class="text-rose-600">*</span>
+            </label>
+            <select id="selectStudentClass" required class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 outline-none font-semibold text-slate-800 transition bg-white">
+              <option value="" disabled selected>-- Pilih Kelas VIII --</option>
+              <option value="VIII-A">VIII - A</option>
+              <option value="VIII-B">VIII - B</option>
+              <option value="VIII-C">VIII - C</option>
+              <option value="VIII-D">VIII - D</option>
+              <option value="VIII-E">VIII - E</option>
+              <option value="VIII-F">VIII - F</option>
+              <option value="VIII-G">VIII - G</option>
+              <option value="VIII-H">VIII - H</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="inputAbsen" class="block text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide mb-1">
+              Nomor Absen <span class="text-rose-600">*</span>
+            </label>
+            <input type="number" id="inputAbsen" min="1" max="50" required placeholder="1 - 40" 
+              class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 outline-none font-semibold text-slate-800 transition">
+          </div>
+        </div>
+
+        <div>
+          <label for="inputSchool" class="block text-xs sm:text-sm font-bold text-slate-700 uppercase tracking-wide mb-1">
+            Asal Sekolah
+          </label>
+          <input type="text" id="inputSchool" value="SMP NEGERI" placeholder="NAMA SEKOLAH"
+            class="w-full px-4 py-3 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-100 outline-none uppercase font-semibold text-slate-800 transition">
+        </div>
+
+        <!-- Aturan Anti Nyontek -->
+        <div class="rounded-xl bg-slate-100 p-4 text-xs text-slate-600 space-y-1.5 border border-slate-200">
+          <div class="font-bold text-slate-800 flex items-center gap-1.5 text-sm mb-1">
+            <svg class="w-4 h-4 text-indigo-600" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 1.944A11.954 11.954 0 012.166 5C2.056 5.649 2 6.319 2 7c0 5.225 3.34 9.67 8 11.317C14.66 16.67 18 12.225 18 7c0-.682-.057-1.35-.166-2.001A11.954 11.954 0 0110 1.944zM11 14a1 1 0 11-2 0 1 1 0 012 0zm0-7a1 1 0 10-2 0v3a1 1 0 102 0V7z" clip-rule="evenodd"/></svg>
+            Protokol Keamanan Kejujuran Siswa:
+          </div>
+          <p>• Waktu ujian: <strong>45 Menit</strong> (30 Butir Soal).</p>
+          <p>• <strong>Dilarang keluar dari tab/layar browser</strong>. Jika keluar, alarm berbunyi kencang dan pelanggaran langsung dicatat ke rekap guru.</p>
+          <p>• Setiap jawaban bernilai <strong>1 poin</strong> (Skor Maksimal 30).</p>
+        </div>
+
+        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-indigo-700 to-blue-600 hover:from-indigo-800 hover:to-blue-700 text-white font-extrabold text-base sm:text-lg shadow-lg shadow-indigo-200 transition-transform active:scale-[0.99] flex items-center justify-center gap-2">
+          <span>KUNCI LAYAR & MULAI ASESMEN</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 2. TAHAP RUANG UJIAN (EXAM ARENA) -->
+    <!-- ============================================== -->
+    <div id="sectionExamArena" class="hidden w-full max-w-7xl grid-cols-1 lg:grid-cols-4 gap-6 items-start">
+      
+      <!-- Panel Kiri: Informasi Siswa, Timer, & Nomor Soal -->
+      <aside class="lg:col-span-1 space-y-4 order-2 lg:order-1">
+        <!-- Card Timer & Peringatan Pelanggaran -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5">
+          <div class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Sisa Waktu Ujian</div>
+          <div id="timerDisplay" class="font-mono-num text-3xl sm:text-4xl font-black text-indigo-700 tracking-tight flex items-center justify-between">
+            <span>45:00</span>
+            <span class="text-xs bg-indigo-100 text-indigo-800 font-semibold px-2 py-1 rounded-md">45 Menit</span>
+          </div>
+
+          <!-- Pelanggaran Counter -->
+          <div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between">
+            <div>
+              <div class="text-xs font-bold text-slate-500">Percobaan Curang:</div>
+              <div class="text-xs text-slate-400">Keluar aplikasi / pindah tab</div>
+            </div>
+            <div id="badgeViolationCount" class="text-base font-black px-2.5 py-1 rounded-lg bg-emerald-100 text-emerald-800 font-mono">
+              0x
+            </div>
+          </div>
+        </div>
+
+        <!-- Identitas Siswa Mini -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4">
+          <div class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">Peserta Ujian</div>
+          <div id="cardStudentName" class="font-bold text-slate-800 text-sm truncate uppercase">AHMAD FAUZI</div>
+          <div class="flex items-center gap-2 mt-1 text-xs text-slate-600">
+            <span id="cardStudentClass" class="bg-slate-100 px-2 py-0.5 rounded font-semibold text-slate-700">VIII-A</span>
+            <span>Absen: <strong id="cardStudentAbsen">12</strong></span>
+          </div>
+        </div>
+
+        <!-- Palet Kisi Nomor Soal (1-30) -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-4 sm:p-5">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-xs font-bold text-slate-700 uppercase tracking-wider">Navigasi Soal</div>
+            <span id="answeredSummary" class="text-xs font-bold text-indigo-600">0 / 30 Terjawab</span>
+          </div>
+
+          <div id="questionGrid" class="grid grid-cols-5 gap-2 max-h-64 overflow-y-auto pr-1">
+            <!-- Diisi lewat Javascript -->
+          </div>
+
+          <!-- Keterangan Legend -->
+          <div class="mt-4 pt-3 border-t border-slate-100 grid grid-cols-2 gap-2 text-[11px] text-slate-500 font-medium">
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-indigo-600 inline-block"></span> Terjawab
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-amber-400 inline-block"></span> Ragu-Ragu
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-slate-200 inline-block"></span> Belum Dijawab
+            </div>
+            <div class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded bg-purple-200 border border-purple-400 inline-block"></span> PG Kompleks
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Panel Kanan: Konten Soal Aktif -->
+      <section class="lg:col-span-3 order-1 lg:order-2 space-y-4">
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8 relative min-h-[480px] flex flex-col justify-between">
+          <div>
+            <!-- Header Soal -->
+            <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b border-slate-200 mb-6">
+              <div class="flex items-center gap-3">
+                <span class="text-xs font-black text-white bg-indigo-700 px-3 py-1.5 rounded-lg tracking-wider" id="badgeQuestionNumber">SOAL NO. 1</span>
+                <span id="badgeQuestionType" class="text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700">Pilihan Ganda Biasa</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <button type="button" id="btnToggleDoubt" class="px-3 py-1 rounded-lg border border-amber-300 text-amber-800 bg-amber-50 hover:bg-amber-100 text-xs font-bold transition flex items-center gap-1.5">
+                  <span id="doubtIcon">🏳️</span>
+                  <span id="doubtText">Tandai Ragu-Ragu</span>
+                </button>
+                <span class="text-xs font-bold text-slate-400">Bobot: 1 Poin</span>
+              </div>
+            </div>
+
+            <!-- Teks Pertanyaan & Stimulus -->
+            <div id="questionBody" class="space-y-4 text-slate-800 leading-relaxed text-sm sm:text-base font-normal">
+              <!-- Render text soal di sini -->
+            </div>
+
+            <!-- Opsi Jawaban -->
+            <div id="optionsContainer" class="mt-6 space-y-3">
+              <!-- Render radio / checkbox di sini -->
+            </div>
+          </div>
+
+          <!-- Tombol Navigasi Bawah -->
+          <div class="pt-6 mt-8 border-t border-slate-200 flex items-center justify-between gap-3">
+            <button id="btnPrevQuestion" class="px-5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 font-bold text-sm transition flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              <span>Sebelumnya</span>
+            </button>
+
+            <button id="btnFinishExam" class="px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-sm shadow-md transition flex items-center gap-2">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <span>Selesai Ujian</span>
+            </button>
+
+            <button id="btnNextQuestion" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow transition flex items-center gap-2">
+              <span>Selanjutnya</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ============================================== -->
+    <!-- 3. TAHAP SELESAI / HASIL NILAI & BUKTI -->
+    <!-- ============================================== -->
+    <div id="sectionExamResult" class="hidden w-full max-w-2xl bg-white rounded-3xl shadow-xl border border-slate-200 overflow-hidden text-center p-6 sm:p-10 space-y-6">
+      <div class="w-20 h-20 mx-auto rounded-3xl bg-emerald-100 text-emerald-600 flex items-center justify-center">
+        <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/></svg>
+      </div>
+
+      <div>
+        <span class="text-xs font-bold uppercase tracking-widest text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Asesmen Berhasil Diselesaikan</span>
+        <h2 class="text-3xl font-extrabold text-slate-900 mt-2">Terima Kasih Atas Kejujuran Anda!</h2>
+        <p class="text-sm text-slate-500 mt-1">Seluruh data pengerjaan telah diamankan dan dicatat ke sistem penilaian.</p>
+      </div>
+
+      <!-- Kartu Hasil Nilai -->
+      <div class="bg-gradient-to-br from-slate-900 to-indigo-950 text-white rounded-2xl p-6 shadow-inner text-left relative overflow-hidden">
+        <div class="flex justify-between items-start">
+          <div>
+            <div class="text-xs text-indigo-300 font-bold uppercase">Nama Siswa</div>
+            <div id="resultStudentName" class="text-lg font-extrabold text-white tracking-wide uppercase">AHMAD FAUZI</div>
+            <div class="text-xs text-slate-300 mt-0.5">
+              Kelas: <span id="resultStudentClass" class="font-semibold text-amber-300">VIII-A</span> | No. Absen: <span id="resultStudentAbsen" class="font-semibold text-amber-300">12</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs text-slate-300">Total Benar</div>
+            <div class="text-2xl font-black text-amber-400 font-mono-num"><span id="resultScoreCorrect">0</span> / 30</div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
+          <div>
+            <div class="text-xs text-indigo-300">Nilai Akhir (Skala 100)</div>
+            <div id="resultFinalGrade" class="text-4xl font-black text-white font-mono-num">0.0</div>
+          </div>
+          <div class="text-right">
+            <div class="text-xs text-indigo-300">Status Kejujuran</div>
+            <div id="resultCheatingStatus" class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 inline-block mt-1">
+              0 Pelanggaran (Tertib)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Status Kirim Google Sheet -->
+      <div id="sheetSyncNotice" class="p-3 bg-slate-50 rounded-xl text-xs text-slate-600 border border-slate-200 flex items-center justify-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+        <span id="sheetSyncStatusText">Data tersinkronisasi otomatis dengan Lembar Nilai Guru.</span>
+      </div>
+
+      <!-- Aksi Cetak / Download Berkas -->
+      <div class="flex flex-col sm:flex-row gap-3 pt-2">
+        <button id="btnDownloadCSV" class="flex-1 py-3 px-4 rounded-xl border-2 border-slate-200 hover:bg-slate-50 text-slate-700 font-bold text-sm transition flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+          <span>Unduh Berkas Nilai (.CSV)</span>
+        </button>
+        <button onclick="window.print()" class="flex-1 py-3 px-4 rounded-xl bg-indigo-700 hover:bg-indigo-800 text-white font-bold text-sm shadow transition flex items-center justify-center gap-2">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+          <span>Cetak Bukti Ujian (PDF)</span>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="bg-white border-t border-slate-200 py-3 text-center text-xs text-slate-500">
+    ASTS Ganjil Bahasa Indonesia Kelas VIII SMP • Mengedepankan Integritas & Nilai Kejujuran
+  </footer>
+
+  <!-- ============================================== -->
+  <!-- MODAL: PERINGATAN KECURANGAN (ALARM POPUP) -->
+  <!-- ============================================== -->
+  <div id="modalViolation" class="hidden fixed inset-0 z-50 bg-rose-950/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-3xl p-6 sm:p-8 text-center space-y-4 shadow-2xl border-4 border-rose-500 animate-bounce-short">
+      <div class="w-16 h-16 mx-auto rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center">
+        <svg class="w-9 h-9" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
+      </div>
+
+      <div class="space-y-1">
+        <h3 class="text-xl font-black text-rose-700 uppercase tracking-tight">PERINGATAN KECURANGAN!</h3>
+        <p class="text-sm font-semibold text-slate-700">Anda terdeteksi keluar dari layar ujian atau berpindah tab!</p>
+      </div>
+
+      <div class="p-3 bg-rose-50 rounded-xl text-xs text-rose-900 border border-rose-200 text-left space-y-1">
+        <p>• Suara alarm telah dibunyikan.</p>
+        <p>• Waktu & histori pelanggaran dicatat ke Lembar Nilai Guru.</p>
+        <p>• Pelanggaran ke: <strong id="modalViolationNum" class="font-black text-rose-700 text-sm">1</strong></p>
+      </div>
+
+      <button id="btnDismissViolation" class="w-full py-3.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-black text-sm uppercase tracking-wider shadow-lg transition">
+        SAYA MENGERTI & KEMBALI KE UJIAN
+      </button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: KONFIRMASI SELESAI UJIAN -->
+  <!-- ============================================== -->
+  <div id="modalConfirmFinish" class="hidden fixed inset-0 z-40 bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="w-full max-w-md bg-white rounded-2xl p-6 text-center space-y-4 shadow-xl border border-slate-200">
+      <div class="w-12 h-12 mx-auto rounded-full bg-indigo-100 text-indigo-700 flex items-center justify-center">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      </div>
+      <h3 class="text-lg font-bold text-slate-800">Kirim & Selesaikan Ujian?</h3>
+      <p id="confirmStatsText" class="text-xs text-slate-600">Anda telah menjawab 30 dari 30 soal. Jawaban tidak dapat diubah kembali setelah dikirim.</p>
+      
+      <div class="flex gap-3 pt-2">
+        <button id="btnCancelFinish" class="flex-1 py-2.5 rounded-xl border border-slate-300 font-semibold text-slate-700 hover:bg-slate-100 text-sm">
+          Periksa Lagi
+        </button>
+        <button id="btnDoSubmitExam" class="flex-1 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow">
+          Ya, Kirim Sekarang
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- MODAL: PENGATURAN GURU & GOOGLE SHEETS -->
+  <!-- ============================================== -->
+  <div id="modalTeacherSettings" class="hidden fixed inset-0 z-50 bg-slate-900/70 backdrop-blur-xs flex items-center justify-center p-4">
+    <div class="w-full max-w-2xl bg-white rounded-2xl p-6 space-y-5 shadow-2xl border border-slate-200 max-h-[90vh] overflow-y-auto">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+        <div class="flex items-center gap-2">
+          <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">G</div>
+          <div>
+            <h3 class="font-bold text-slate-800 text-base">Pengaturan Guru & Google Sheets</h3>
+            <p class="text-xs text-slate-500">Konfigurasi sinkronisasi nilai dan rekaman kecurangan secara real-time</p>
+          </div>
+        </div>
+        <button id="btnCloseTeacherModal" class="text-slate-400 hover:text-slate-600 p-1">✕</button>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Google Apps Script Web App URL (Tautkan ke Sheet)</label>
+          <input type="url" id="inputGoogleSheetWebhook" value="https://script.google.com/macros/s/AKfycbxBExTTdO5xAtAz0rkn1FQagMHg-4NSpLGUbDs5rtNSAjoPhaiSxMfNuCljNPDxnUw/exec"
+            placeholder="https://script.google.com/macros/s/.../exec"
+            class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-indigo-500 font-mono text-xs bg-slate-50 text-slate-800">
+          <p class="text-[11px] text-emerald-600 font-semibold mt-1">✓ URL Web App resmi Anda telah aktif dan terhubung secara otomatis ke sistem penilaian.</p>
+        </div>
+
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 space-y-2">
+          <div class="font-bold text-slate-800 flex items-center justify-between">
+            <span>Kode Script Google Sheet (Apps Script):</span>
+            <button id="btnCopyAppsScript" class="text-xs text-indigo-600 hover:text-indigo-800 font-semibold underline">Salin Script</button>
+          </div>
+          <p class="text-slate-600 text-xs">
+            Buka Google Sheet Bapak/Ibu Guru -> Klik <strong>Ekstensi (Extensions)</strong> -> <strong>Apps Script</strong> -> Tempel kode ini -> Deploy sebagai <strong>Web App</strong> (Akses: <em>Anyone/Siapa Saja</em>):
+          </p>
+          <textarea id="scriptSnippet" readonly class="w-full h-28 p-2 font-mono text-[10px] bg-slate-900 text-emerald-400 rounded-lg overflow-x-auto resize-none">
+function doPost(e) {
+  try {
+    var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+    if (sheet.getLastRow() === 0) {
+      sheet.appendRow([
+        "Waktu", "Nama Siswa", "Kelas", "Absen", "Asal Sekolah", 
+        "Benar", "Skor (100)", "Total Pelanggaran", "Detail Pelanggaran"
+      ]);
+    }
+    var data = JSON.parse(e.postData.contents);
+    sheet.appendRow([
+      new Date(),
+      data.name,
+      data.studentClass,
+      data.absen,
+      data.school,
+      data.scoreCorrect,
+      data.finalScore,
+      data.violationCount,
+      data.violationDetails
+    ]);
+    return ContentService.createTextOutput(JSON.stringify({status: "success"}))
+      .setMimeType(ContentService.MimeType.JSON);
+  } catch (err) {
+    return ContentService.createTextOutput(JSON.stringify({status: "error", message: err.toString()}))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+          </textarea>
+        </div>
+
+        <div class="flex items-center justify-between pt-2">
+          <button id="btnSaveTeacherSettings" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow">
+            Simpan Konfigurasi
+          </button>
+          <span id="saveSettingsAlert" class="text-xs text-emerald-600 font-bold hidden">Tersimpan!</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* =========================================================
+       DATA BANK SOAL ASTS BAHASA INDONESIA KELAS VIII
+       (Sesuai Dokumen Resmi Soal & Kunci Jawaban ASTS Ganjil)
+       ========================================================= */
+    const EXAM_QUESTIONS = [
+      // --- BAB 1: TEKS LAPORAN HASIL OBSERVASI (PG TUNGGAL 1-10) ---
+      {
+        id: 1,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Perhatikan kutipan berikut!\n\n\"Komodo merupakan reptil endemik Indonesia yang hidup di beberapa pulau di Nusa Tenggara Timur. Hewan ini memiliki tubuh besar, kulit bersisik, dan ekor yang kuat. Komodo termasuk hewan karnivora.\"\n\nInformasi utama kutipan tersebut adalah ....",
+        options: [
+          { key: "A", text: "Habitat komodo hanya terdapat di Pulau Komodo" },
+          { key: "B", text: "Ciri-ciri fisik dan klasifikasi komodo sebagai hewan karnivora" },
+          { key: "C", text: "Komodo merupakan hewan yang paling besar di Indonesia" },
+          { key: "D", text: "Komodo hanya memakan tumbuhan di habitatnya" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 2,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Tujuan utama teks laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "menghibur pembaca dengan cerita tentang objek" },
+          { key: "B", text: "membujuk pembaca agar menyukai suatu objek" },
+          { key: "C", text: "menyampaikan informasi faktual berdasarkan hasil pengamatan" },
+          { key: "D", text: "menceritakan pengalaman penulis saat mengamati objek" }
+        ],
+        correct: ["C"]
+      },
+      {
+        id: 3,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Kalimat berikut yang paling tepat digunakan dalam teks laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "Menurut saya, bunga mawar adalah bunga paling cantik." },
+          { key: "B", text: "Bunga mawar memiliki batang berduri dan termasuk tumbuhan berbunga." },
+          { key: "C", text: "Wah, bunga mawar itu sangat indah sekali!" },
+          { key: "D", text: "Sepertinya semua orang pasti menyukai bunga mawar." }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 4,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Bagian teks laporan hasil observasi yang berisi pengenalan atau definisi umum tentang objek disebut ....",
+        options: [
+          { key: "A", text: "deskripsi manfaat" },
+          { key: "B", text: "deskripsi bagian" },
+          { key: "C", text: "pernyataan umum" },
+          { key: "D", text: "simpulan" }
+        ],
+        correct: ["C"]
+      },
+      {
+        id: 5,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Perhatikan kalimat berikut!\n\n\"Pohon mangga memiliki akar yang kuat, batang berkayu, dan daun berwarna hijau.\"\n\nKalimat tersebut termasuk bagian ....",
+        options: [
+          { key: "A", text: "pernyataan umum" },
+          { key: "B", text: "deskripsi bagian" },
+          { key: "C", text: "deskripsi manfaat" },
+          { key: "D", text: "interpretasi" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 6,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Salah satu ciri kebahasaan teks laporan hasil observasi adalah penggunaan ....",
+        options: [
+          { key: "A", text: "kata teknis sesuai objek yang dibahas" },
+          { key: "B", text: "kalimat perintah" },
+          { key: "C", text: "ungkapan persuasif" },
+          { key: "D", text: "dialog antartokoh" }
+        ],
+        correct: ["A"]
+      },
+      {
+        id: 7,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Agar informasi dalam teks laporan hasil observasi dapat dipercaya, data yang digunakan harus ....",
+        options: [
+          { key: "A", text: "berdasarkan imajinasi penulis" },
+          { key: "B", text: "bersifat faktual dan dapat dibuktikan" },
+          { key: "C", text: "dibuat semenarik mungkin" },
+          { key: "D", text: "mengandung pendapat pribadi" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 8,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Kalimat yang mengandung istilah khusus dalam bidang biologi adalah ....",
+        options: [
+          { key: "A", text: "Kucing itu lucu dan menggemaskan." },
+          { key: "B", text: "Kucing memiliki empat kaki." },
+          { key: "C", text: "Kucing termasuk kelompok mamalia." },
+          { key: "D", text: "Kucing sering dipelihara di rumah." }
+        ],
+        correct: ["C"]
+      },
+      {
+        id: 9,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Perhatikan urutan berikut!\n(1) Deskripsi bagian\n(2) Pernyataan umum\n(3) Deskripsi manfaat\n\nUrutan struktur teks laporan hasil observasi yang tepat adalah ....",
+        options: [
+          { key: "A", text: "(1)–(2)–(3)" },
+          { key: "B", text: "(2)–(1)–(3)" },
+          { key: "C", text: "(2)–(3)–(1)" },
+          { key: "D", text: "(3)–(1)–(2)" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 10,
+        type: "single",
+        category: "Bab 1 – Teks Laporan Hasil Observasi",
+        text: "Pernyataan berikut yang menunjukkan sikap objektif dalam laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "Pantai itu sangat menakjubkan dan paling indah." },
+          { key: "B", text: "Menurut saya, pantai tersebut cocok untuk semua orang." },
+          { key: "C", text: "Pantai memiliki pasir putih dan air laut yang jernih." },
+          { key: "D", text: "Saya sangat senang mengunjungi pantai itu." }
+        ],
+        correct: ["C"]
+      },
+
+      // --- BAB 1: TEKS LAPORAN HASIL OBSERVASI (PG KOMPLEKS 11-15) ---
+      {
+        id: 11,
+        type: "complex",
+        category: "Bab 1 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nCiri-ciri teks laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "menyajikan informasi berdasarkan fakta" },
+          { key: "B", text: "menggunakan bahasa yang objektif" },
+          { key: "C", text: "berisi khayalan penulis" },
+          { key: "D", text: "membahas objek secara sistematis" }
+        ],
+        correct: ["A", "B", "D"]
+      },
+      {
+        id: 12,
+        type: "complex",
+        category: "Bab 1 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nYang termasuk struktur teks laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "pernyataan umum" },
+          { key: "B", text: "deskripsi bagian" },
+          { key: "C", text: "deskripsi manfaat" },
+          { key: "D", text: "orientasi tokoh" }
+        ],
+        correct: ["A", "B", "C"]
+      },
+      {
+        id: 13,
+        type: "complex",
+        category: "Bab 1 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nKalimat yang bersifat faktual adalah ....",
+        options: [
+          { key: "A", text: "Air mendidih pada suhu sekitar 100°C pada tekanan udara standar." },
+          { key: "B", text: "Bunga matahari adalah bunga paling cantik." },
+          { key: "C", text: "Paus merupakan mamalia yang hidup di laut." },
+          { key: "D", text: "Gunung itu terlihat sangat menyeramkan." }
+        ],
+        correct: ["A", "C"]
+      },
+      {
+        id: 14,
+        type: "complex",
+        category: "Bab 1 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nDalam menyusun laporan hasil observasi, seorang siswa sebaiknya ....",
+        options: [
+          { key: "A", text: "mengamati objek secara teliti" },
+          { key: "B", text: "mencatat data penting" },
+          { key: "C", text: "menambahkan informasi yang tidak diamati agar laporan lebih panjang" },
+          { key: "D", text: "menggunakan sumber informasi yang dapat dipercaya" }
+        ],
+        correct: ["A", "B", "D"]
+      },
+      {
+        id: 15,
+        type: "complex",
+        category: "Bab 1 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nKalimat berikut yang sesuai untuk laporan hasil observasi adalah ....",
+        options: [
+          { key: "A", text: "Burung memiliki sayap yang membantu proses terbang." },
+          { key: "B", text: "Burung itu sangat keren sekali!" },
+          { key: "C", text: "Sebagian burung memiliki paruh dengan bentuk yang berbeda sesuai jenis makanannya." },
+          { key: "D", text: "Menurut saya, semua burung seharusnya dipelihara." }
+        ],
+        correct: ["A", "C"]
+      },
+
+      // --- BAB 2: IKLAN, SLOGAN, DAN POSTER (PG TUNGGAL 16-25) ---
+      {
+        id: 16,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Tujuan utama iklan adalah ....",
+        options: [
+          { key: "A", text: "menyampaikan cerita fiksi" },
+          { key: "B", text: "menawarkan atau mengenalkan produk, jasa, atau gagasan" },
+          { key: "C", text: "menjelaskan hasil penelitian" },
+          { key: "D", text: "menggambarkan tokoh" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 17,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Kalimat yang tepat sebagai slogan tentang kebersihan adalah ....",
+        options: [
+          { key: "A", text: "Sampah adalah benda yang selalu ada." },
+          { key: "B", text: "Buang sampah pada tempatnya, lingkungan bersih hidup sehat." },
+          { key: "C", text: "Kemarin sekolah kami membersihkan halaman." },
+          { key: "D", text: "Halaman sekolah memiliki banyak pohon." }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 18,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Salah satu ciri slogan adalah ....",
+        options: [
+          { key: "A", text: "panjang dan terdiri atas banyak paragraf" },
+          { key: "B", text: "menggunakan kalimat singkat, menarik, dan mudah diingat" },
+          { key: "C", text: "selalu berbentuk cerita" },
+          { key: "D", text: "hanya digunakan untuk menjual makanan" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 19,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Poster yang baik seharusnya ....",
+        options: [
+          { key: "A", text: "menggunakan teks yang sangat panjang" },
+          { key: "B", text: "memadukan gambar dan tulisan yang menarik" },
+          { key: "C", text: "hanya berisi gambar tanpa pesan" },
+          { key: "D", text: "menggunakan istilah yang sulit dipahami" }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 20,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Perhatikan kalimat berikut!\n\n\"Gunakan tumbler setiap hari. Kurangi sampah plastik!\"\n\nKalimat tersebut paling tepat digunakan sebagai ....",
+        options: [
+          { key: "A", text: "slogan kampanye lingkungan" },
+          { key: "B", text: "laporan observasi" },
+          { key: "C", text: "berita" },
+          { key: "D", text: "cerpen" }
+        ],
+        correct: ["A"]
+      },
+      {
+        id: 21,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Bahasa dalam iklan sebaiknya ....",
+        options: [
+          { key: "A", text: "persuasif dan mudah dipahami" },
+          { key: "B", text: "berbelit-belit" },
+          { key: "C", text: "penuh istilah asing tanpa penjelasan" },
+          { key: "D", text: "hanya berupa angka" }
+        ],
+        correct: ["A"]
+      },
+      {
+        id: 22,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Informasi yang penting dicantumkan dalam iklan produk adalah ....",
+        options: [
+          { key: "A", text: "nama produk dan keunggulannya" },
+          { key: "B", text: "riwayat hidup pembuat iklan" },
+          { key: "C", text: "cerita masa kecil penjual" },
+          { key: "D", text: "pendapat semua pembeli" }
+        ],
+        correct: ["A"]
+      },
+      {
+        id: 23,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Kalimat berikut yang bersifat persuasif adalah ....",
+        options: [
+          { key: "A", text: "Sekolah memiliki taman di halaman depan." },
+          { key: "B", text: "Ayo, hemat air mulai dari sekarang!" },
+          { key: "C", text: "Air digunakan untuk berbagai keperluan." },
+          { key: "D", text: "Keran air berada di dekat kamar mandi." }
+        ],
+        correct: ["B"]
+      },
+      {
+        id: 24,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Perbedaan utama poster dan slogan adalah ....",
+        options: [
+          { key: "A", text: "poster memadukan visual dan teks, sedangkan slogan umumnya berupa ungkapan singkat" },
+          { key: "B", text: "poster selalu berupa cerita, slogan berupa gambar" },
+          { key: "C", text: "poster hanya digunakan untuk iklan komersial" },
+          { key: "D", text: "slogan harus selalu lebih panjang daripada poster" }
+        ],
+        correct: ["A"]
+      },
+      {
+        id: 25,
+        type: "single",
+        category: "Bab 2 – Iklan, Slogan, dan Poster",
+        text: "Perhatikan kalimat berikut!\n\n\"Belajar Cerdas, Raih Prestasi!\"\n\nKeunggulan kalimat tersebut sebagai slogan adalah ....",
+        options: [
+          { key: "A", text: "panjang dan rinci" },
+          { key: "B", text: "singkat, menarik, dan mudah diingat" },
+          { key: "C", text: "menggunakan data statistik" },
+          { key: "D", text: "berisi langkah-langkah kegiatan" }
+        ],
+        correct: ["B"]
+      },
+
+      // --- BAB 2: IKLAN, SLOGAN, DAN POSTER (PG KOMPLEKS 26-30) ---
+      {
+        id: 26,
+        type: "complex",
+        category: "Bab 2 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nCiri-ciri iklan yang efektif adalah ....",
+        options: [
+          { key: "A", text: "pesan mudah dipahami" },
+          { key: "B", text: "menggunakan bahasa persuasif" },
+          { key: "C", text: "informasi dibuat menyesatkan" },
+          { key: "D", text: "menarik perhatian sasaran" }
+        ],
+        correct: ["A", "B", "D"]
+      },
+      {
+        id: 27,
+        type: "complex",
+        category: "Bab 2 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nUnsur yang dapat memperkuat sebuah poster adalah ....",
+        options: [
+          { key: "A", text: "gambar yang relevan" },
+          { key: "B", text: "judul atau slogan yang menarik" },
+          { key: "C", text: "teks yang sangat panjang" },
+          { key: "D", text: "informasi yang jelas" }
+        ],
+        correct: ["A", "B", "D"]
+      },
+      {
+        id: 28,
+        type: "complex",
+        category: "Bab 2 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nKalimat yang termasuk slogan adalah ....",
+        options: [
+          { key: "A", text: "Bersih Sekolahku, Nyaman Belajarku!" },
+          { key: "B", text: "Buku adalah jendela dunia." },
+          { key: "C", text: "Pada hari Senin siswa mengikuti upacara." },
+          { key: "D", text: "Sehat Dimulai dari Pilihanmu!" }
+        ],
+        correct: ["A", "B", "D"]
+      },
+      {
+        id: 29,
+        type: "complex",
+        category: "Bab 2 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nBahasa iklan yang baik seharusnya ....",
+        options: [
+          { key: "A", text: "komunikatif" },
+          { key: "B", text: "persuasif" },
+          { key: "C", text: "sesuai fakta" },
+          { key: "D", text: "sengaja membingungkan pembaca" }
+        ],
+        correct: ["A", "B", "C"]
+      },
+      {
+        id: 30,
+        type: "complex",
+        category: "Bab 2 – Pilihan Ganda Kompleks (jawaban benar lebih dari satu)",
+        text: "Pilihlah SEMUA jawaban yang benar! (jawaban benar lebih dari satu)\n\nSebuah poster bertema “Kurangi Sampah Plastik” akan lebih efektif jika ....",
+        options: [
+          { key: "A", text: "menggunakan gambar yang mendukung pesan" },
+          { key: "B", text: "menggunakan kalimat ajakan yang singkat" },
+          { key: "C", text: "memenuhi seluruh poster dengan paragraf panjang" },
+          { key: "D", text: "menampilkan tindakan yang dapat dilakukan pembaca" }
+        ],
+        correct: ["A", "B", "D"]
+      }
+    ];
+
+    let studentInfo = {
+      name: "",
+      studentClass: "",
+      absen: "",
+      school: ""
+    };
+
+    let userAnswers = {}; // { questionId: ["A"] or ["A", "C"] }
+    let doubtStatus = {}; // { questionId: true/false }
+    let currentQuestionIndex = 0;
+    let timerInterval = null;
+    let remainingSeconds = 45 * 60; // 45 Menit = 2700 detik
+    let examActive = false;
+    let examCompleted = false;
+
+    // Pelanggaran & Log Kejujuran
+    let violationCount = 0;
+    let violationLogs = [];
+    let audioCtx = null;
+    let alarmOscillator = null;
+
+    // Google Sheet Webhook URL Resmi yang Digabungkan
+    let googleSheetUrl = "https://script.google.com/macros/s/AKfycbxBExTTdO5xAtAz0rkn1FQagMHg-4NSpLGUbDs5rtNSAjoPhaiSxMfNuCljNPDxnUw/exec";
+
+    // 1. Trap Tombol Back / Gestur Usap HP agar Ujian Tidak Keluar
+    function setupNavigationTraps() {
+      window.history.pushState(null, null, window.location.href);
+      window.addEventListener('popstate', function () {
+        if (examActive && !examCompleted) {
+          window.history.pushState(null, null, window.location.href);
+          recordViolation("Mencoba menekan tombol Kembali (Back Button)");
+        }
+      });
+
+      // Peringatan saat mencoba me-refresh browser
+      window.addEventListener('beforeunload', function (e) {
+        if (examActive && !examCompleted) {
+          e.preventDefault();
+          e.returnValue = 'Ujian sedang berlangsung! Jika Anda keluar, jawaban akan hilang.';
+          return e.returnValue;
+        }
+      });
+    }
+
+    // Penyimpanan Cadangan Otomatis ke SessionStorage
+    function saveSessionBackup() {
+      try {
+        if (!examActive || examCompleted) return;
+        sessionStorage.setItem('cbt_student', JSON.stringify(studentInfo));
+        sessionStorage.setItem('cbt_answers', JSON.stringify(userAnswers));
+        sessionStorage.setItem('cbt_doubts', JSON.stringify(doubtStatus));
+        sessionStorage.setItem('cbt_violations', JSON.stringify({ count: violationCount, logs: violationLogs }));
+      } catch (e) {
+        console.warn("Session storage quota or restricted:", e);
+      }
+    }
+
+    function initAudio() {
+      if (!audioCtx) {
+        const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+        if (AudioContextClass) {
+          audioCtx = new AudioContextClass();
+        }
+      }
+      if (audioCtx && audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playAlarmSiren() {
+      try {
+        initAudio();
+        if (!audioCtx) return;
+
+        // Bunyi sirine dua nada tajam
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        
+        // Modulasi nada (Siren 800Hz - 1200Hz)
+        const now = audioCtx.currentTime;
+        osc.frequency.setValueAtTime(850, now);
+        osc.frequency.linearRampToValueAtTime(1200, now + 0.25);
+        osc.frequency.linearRampToValueAtTime(850, now + 0.5);
+        osc.frequency.linearRampToValueAtTime(1200, now + 0.75);
+
+        gain.gain.setValueAtTime(0.3, now);
+        gain.gain.exponentialRampToValueAtTime(0.01, now + 1.2);
+
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start(now);
+        osc.stop(now + 1.2);
+      } catch (e) {
+        console.warn("Audio error:", e);
+      }
+    }
+
+    // 1. Deteksi Perpindahan Tab / Minimize / Blur
+    function recordViolation(reason) {
+      if (!examActive || examCompleted) return;
+
+      violationCount++;
+      const timeStr = new Date().toLocaleTimeString('id-ID');
+      const logEntry = `[${timeStr}] ${reason}`;
+      violationLogs.push(logEntry);
+
+      // Mainkan suara alarm nyaring
+      playAlarmSiren();
+
+      // Perbarui UI
+      const badge = document.getElementById('badgeViolationCount');
+      if (badge) {
+        badge.textContent = `${violationCount}x`;
+        badge.classList.remove('bg-emerald-100', 'text-emerald-800');
+        badge.classList.add('bg-rose-100', 'text-rose-800', 'animate-pulse');
+      }
+
+      // Tampilkan Modal Peringatan
+      document.getElementById('modalViolationNum').textContent = `${violationCount}`;
+      document.getElementById('modalViolation').classList.remove('hidden');
+
+      // Update badge status kejujuran di header
+      const honestyBadge = document.getElementById('honestyBadge');
+      if (honestyBadge) {
+        honestyBadge.className = "flex items-center gap-1.5 px-3 py-1 bg-rose-500/20 text-rose-300 border border-rose-500/40 rounded-full text-xs font-semibold";
+        honestyBadge.innerHTML = `<span class="w-2 h-2 rounded-full bg-rose-400"></span><span>Pelanggaran: ${violationCount}x</span>`;
+      }
+    }
+
+    // Deteksi Tab Berganti
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden && examActive) {
+        recordViolation("Meninggalkan tab browser (Pindah Aplikasi/Tab lain)");
+      }
+    });
+
+    // Deteksi Window Blur
+    window.addEventListener("blur", () => {
+      if (examActive) {
+        recordViolation("Fokus layar hilang (Membuka jendela lain atau split screen)");
+      }
+    });
+
+    // Cegah Klik Kanan (Context Menu)
+    document.addEventListener("contextmenu", (e) => {
+      if (examActive) {
+        e.preventDefault();
+        return false;
+      }
+    });
+
+    // Cegah Tombol Shortcut Inspect (F12, Ctrl+U, Ctrl+Shift+I, Copy, Paste)
+    document.addEventListener("keydown", (e) => {
+      if (!examActive) return;
+
+      // Cegah F12
+      if (e.key === "F12") {
+        e.preventDefault();
+        recordViolation("Mencoba membuka inspect element (F12)");
+        return false;
+      }
+
+      // Cegah Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+C, Ctrl+V
+      if (e.ctrlKey || e.metaKey) {
+        const key = e.key.toLowerCase();
+        if (key === 'c' || key === 'v' || key === 'u' || key === 's' || key === 'p') {
+          e.preventDefault();
+          recordViolation(`Mencoba jalan pintas keyboard (${e.ctrlKey ? 'Ctrl+' : 'Cmd+'}${key.toUpperCase()})`);
+          return false;
+        }
+      }
+    });
+
+    // Minta Fullscreen otomatis
+    function requestFullscreenLock() {
+      const elem = document.documentElement;
+      if (elem.requestFullscreen) {
+        elem.requestFullscreen().catch(() => {});
+      } else if (elem.webkitRequestFullscreen) {
+        elem.webkitRequestFullscreen();
+      } else if (elem.msRequestFullscreen) {
+        elem.msRequestFullscreen();
+      }
+    }
+
+    const nameInput = document.getElementById('inputStudentName');
+    nameInput.addEventListener('input', (e) => {
+      e.target.value = e.target.value.toUpperCase();
+    });
+
+    document.getElementById('formStudentRegistration').addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const nameVal = nameInput.value.trim().toUpperCase();
+      const classVal = document.getElementById('selectStudentClass').value;
+      const absenVal = document.getElementById('inputAbsen').value.trim();
+      const schoolVal = document.getElementById('inputSchool').value.trim().toUpperCase() || "SMP NEGERI";
+
+      if (!nameVal) {
+        showCustomNotice("Harap masukkan nama lengkap siswa!");
+        return;
+      }
+      if (!classVal) {
+        showCustomNotice("Harap pilih kelas siswa!");
+        return;
+      }
+      if (!absenVal) {
+        showCustomNotice("Harap masukkan nomor absen!");
+        return;
+      }
+
+      studentInfo = {
+        name: nameVal,
+        studentClass: classVal,
+        absen: absenVal,
+        school: schoolVal
+      };
+
+      // Inisialisasi Audio dan Kunci Layar
+      initAudio();
+      requestFullscreenLock();
+      setupNavigationTraps();
+
+      // Mulai Ujian
+      startExam();
+    });
+
+    function startExam() {
+      examActive = true;
+
+      // Update Tampilan Peserta di Exam Arena
+      document.getElementById('cardStudentName').textContent = studentInfo.name;
+      document.getElementById('cardStudentClass').textContent = studentInfo.studentClass;
+      document.getElementById('cardStudentAbsen').textContent = studentInfo.absen;
+
+      // Toggle Layar
+      document.getElementById('sectionRegistration').classList.add('hidden');
+      document.getElementById('sectionExamArena').classList.remove('hidden');
+      document.getElementById('sectionExamArena').classList.add('grid');
+      document.getElementById('honestyBadge').classList.remove('hidden');
+      document.getElementById('honestyBadge').classList.add('flex');
+
+      // Buat Palet Soal & Tampilkan Soal Pertama
+      buildQuestionGrid();
+      renderCurrentQuestion();
+
+      // Mulai Timer 45 Menit
+      startTimer();
+    }
+
+    function startTimer() {
+      const timerElem = document.querySelector('#timerDisplay span:first-child');
+      
+      timerInterval = setInterval(() => {
+        remainingSeconds--;
+
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        const timeFormatted = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        timerElem.textContent = timeFormatted;
+
+        // Peringatan jika sisa < 5 menit
+        if (remainingSeconds <= 300 && remainingSeconds > 60) {
+          timerElem.parentElement.classList.add('text-amber-600');
+        } else if (remainingSeconds <= 60) {
+          timerElem.parentElement.classList.remove('text-amber-600');
+          timerElem.parentElement.classList.add('text-rose-600', 'animate-pulse');
+        }
+
+        // Waktu Habis
+        if (remainingSeconds <= 0) {
+          clearInterval(timerInterval);
+          examActive = false;
+          showCustomNotice("Waktu Ujian 45 Menit Telah Habis! Jawaban Anda otomatis dikirim.");
+          setTimeout(() => {
+            finishExam();
+          }, 1500);
+        }
+      }, 1000);
+    }
+
+    function buildQuestionGrid() {
+      const grid = document.getElementById('questionGrid');
+      grid.innerHTML = '';
+
+      EXAM_QUESTIONS.forEach((q, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.id = `gridBtn_${idx}`;
+        
+        const isDoubt = !!doubtStatus[q.id];
+        const isAnswered = userAnswers[q.id] && userAnswers[q.id].length > 0;
+        const isCurrent = idx === currentQuestionIndex;
+
+        let btnClass = 'bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-300';
+        if (isCurrent) {
+          btnClass = 'bg-indigo-100 text-indigo-950 border-indigo-500 ring-2 ring-indigo-400 font-black';
+        } else if (isDoubt) {
+          btnClass = 'bg-amber-400 text-slate-950 border-amber-500 font-bold';
+        } else if (isAnswered) {
+          btnClass = 'bg-indigo-600 text-white border-indigo-700 font-bold';
+        }
+
+        btn.className = `p-2.5 rounded-xl font-mono-num text-xs border transition flex items-center justify-center relative ${btnClass}`;
+        btn.innerHTML = `${q.id}`;
+        
+        // Tanda khusus jika PG Kompleks
+        if (q.type === 'complex') {
+          const dot = document.createElement('span');
+          dot.className = "absolute top-1 right-1 w-1.5 h-1.5 rounded-full bg-purple-500";
+          btn.appendChild(dot);
+        }
+
+        btn.addEventListener('click', () => {
+          currentQuestionIndex = idx;
+          renderCurrentQuestion();
+        });
+
+        grid.appendChild(btn);
+      });
+
+      updateAnsweredCount();
+    }
+
+    function updateQuestionGridStatus() {
+      EXAM_QUESTIONS.forEach((q, idx) => {
+        const btn = document.getElementById(`gridBtn_${idx}`);
+        if (!btn) return;
+
+        const isDoubt = !!doubtStatus[q.id];
+        const isAnswered = userAnswers[q.id] && userAnswers[q.id].length > 0;
+        const isCurrent = idx === currentQuestionIndex;
+
+        let btnClass = 'bg-slate-100 text-slate-700 hover:bg-slate-200 border-slate-300';
+        if (isCurrent) {
+          btnClass = isDoubt 
+            ? 'bg-amber-400 text-slate-950 border-amber-600 ring-2 ring-amber-300 shadow'
+            : (isAnswered 
+                ? 'bg-indigo-600 text-white border-indigo-800 ring-2 ring-indigo-300 shadow' 
+                : 'bg-white text-indigo-950 border-indigo-600 ring-2 ring-indigo-200 font-black shadow');
+        } else if (isDoubt) {
+          btnClass = 'bg-amber-400 text-slate-950 border-amber-500 font-bold';
+        } else if (isAnswered) {
+          btnClass = 'bg-indigo-600 text-white border-indigo-700 font-bold';
+        }
+
+        btn.className = `p-2.5 rounded-xl font-mono-num text-xs border transition flex items-center justify-center relative ${btnClass}`;
+      });
+
+      updateAnsweredCount();
+    }
+
+    function updateAnsweredCount() {
+      let answeredCount = 0;
+      EXAM_QUESTIONS.forEach(q => {
+        if (userAnswers[q.id] && userAnswers[q.id].length > 0) {
+          answeredCount++;
+        }
+      });
+      document.getElementById('answeredSummary').textContent = `${answeredCount} / 30 Terjawab`;
+    }
+
+    function renderCurrentQuestion() {
+      const q = EXAM_QUESTIONS[currentQuestionIndex];
+      if (!q) return;
+
+      // Header Soal
+      document.getElementById('badgeQuestionNumber').textContent = `SOAL NO. ${q.id}`;
+      
+      // Update Tombol Ragu-Ragu
+      const btnDoubt = document.getElementById('btnToggleDoubt');
+      const doubtText = document.getElementById('doubtText');
+      if (doubtStatus[q.id]) {
+        btnDoubt.className = "px-3 py-1 rounded-lg border border-amber-500 text-amber-950 bg-amber-400 hover:bg-amber-500 text-xs font-black transition flex items-center gap-1.5 shadow-sm";
+        doubtText.textContent = "Status: Ragu-Ragu";
+      } else {
+        btnDoubt.className = "px-3 py-1 rounded-lg border border-slate-300 text-slate-600 bg-slate-50 hover:bg-slate-100 text-xs font-semibold transition flex items-center gap-1.5";
+        doubtText.textContent = "Tandai Ragu-Ragu";
+      }
+
+      const typeBadge = document.getElementById('badgeQuestionType');
+      if (q.type === 'complex') {
+        typeBadge.className = "text-xs font-bold px-3 py-1 rounded-md bg-purple-100 text-purple-800 border border-purple-300 flex items-center gap-1.5";
+        typeBadge.innerHTML = `<svg class="w-3.5 h-3.5 text-purple-700" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg> Pilihan Ganda Kompleks <span class="text-purple-950 font-black underline">(jawaban benar lebih dari satu)</span>`;
+      } else {
+        typeBadge.className = "text-xs font-semibold px-2.5 py-1 rounded-md bg-slate-100 text-slate-700 border border-slate-200";
+        typeBadge.textContent = "Pilihan Ganda Biasa (Pilih 1 Jawaban)";
+      }
+
+      // Teks Pertanyaan (Mendukung baris baru)
+      const bodyContainer = document.getElementById('questionBody');
+      bodyContainer.innerHTML = '';
+
+      const paragraphs = q.text.split('\n');
+      paragraphs.forEach(para => {
+        if (para.trim()) {
+          const p = document.createElement('p');
+          p.textContent = para;
+          // Sorot teks petunjuk atau instruksi jawaban lebih dari satu
+          if (para.includes('Perhatikan') || para.includes('Pilihlah SEMUA') || para.includes('jawaban benar lebih dari satu')) {
+            p.className = "font-bold text-indigo-950 bg-indigo-50/70 p-2.5 rounded-lg border border-indigo-100";
+          }
+          bodyContainer.appendChild(p);
+        }
+      });
+
+      // Opsi Jawaban
+      const optionsBox = document.getElementById('optionsContainer');
+      optionsBox.innerHTML = '';
+
+      const selected = userAnswers[q.id] || [];
+
+      q.options.forEach(opt => {
+        const isChecked = selected.includes(opt.key);
+        const label = document.createElement('label');
+        label.className = `flex items-start gap-3 p-4 rounded-xl border-2 transition cursor-pointer select-none ${
+          isChecked 
+            ? 'border-indigo-600 bg-indigo-50/70 shadow-sm ring-1 ring-indigo-500' 
+            : 'border-slate-200 hover:border-indigo-200 hover:bg-slate-50'
+        }`;
+
+        const inputType = q.type === 'complex' ? 'checkbox' : 'radio';
+        label.innerHTML = `
+          <div class="flex items-center h-6">
+            <input type="${inputType}" name="question_${q.id}" value="${opt.key}" ${isChecked ? 'checked' : ''}
+              class="w-4 h-4 text-indigo-600 focus:ring-indigo-500 border-slate-300 rounded ${inputType === 'radio' ? 'rounded-full' : 'rounded-md'}">
+          </div>
+          <div class="text-sm font-medium text-slate-800 leading-normal flex-1">
+            <span class="inline-block w-6 font-bold text-indigo-900">${opt.key}.</span>
+            ${escapeHtml(opt.text)}
+          </div>
+        `;
+
+        const input = label.querySelector('input');
+        input.addEventListener('change', () => {
+          handleOptionSelection(q, opt.key, inputType);
+        });
+
+        optionsBox.appendChild(label);
+      });
+
+      // Tombol Navigasi Bawah
+      const btnPrev = document.getElementById('btnPrevQuestion');
+      const btnNext = document.getElementById('btnNextQuestion');
+
+      btnPrev.disabled = currentQuestionIndex === 0;
+      btnPrev.className = `px-5 py-2.5 rounded-xl border font-bold text-sm transition flex items-center gap-2 ${
+        currentQuestionIndex === 0 
+          ? 'opacity-40 cursor-not-allowed border-slate-200 text-slate-400' 
+          : 'border-slate-300 hover:bg-slate-100 text-slate-700'
+      }`;
+
+      if (currentQuestionIndex === EXAM_QUESTIONS.length - 1) {
+        btnNext.innerHTML = `<span>Ke Soal Awal</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>`;
+      } else {
+        btnNext.innerHTML = `<span>Selanjutnya</span> <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>`;
+      }
+
+      updateQuestionGridStatus();
+    }
+
+    // Toggle Tombol Ragu-Ragu
+    document.getElementById('btnToggleDoubt').addEventListener('click', () => {
+      const q = EXAM_QUESTIONS[currentQuestionIndex];
+      if (!q) return;
+      doubtStatus[q.id] = !doubtStatus[q.id];
+      saveSessionBackup();
+      renderCurrentQuestion();
+    });
+
+    function handleOptionSelection(question, optionKey, inputType) {
+      if (inputType === 'radio') {
+        userAnswers[question.id] = [optionKey];
+      } else {
+        // Checkbox multi pilihan
+        if (!userAnswers[question.id]) {
+          userAnswers[question.id] = [];
+        }
+        const index = userAnswers[question.id].indexOf(optionKey);
+        if (index > -1) {
+          userAnswers[question.id].splice(index, 1);
+        } else {
+          userAnswers[question.id].push(optionKey);
+        }
+      }
+      saveSessionBackup();
+      renderCurrentQuestion();
+    }
+
+    // Tombol Navigasi Event
+    document.getElementById('btnPrevQuestion').addEventListener('click', () => {
+      if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        renderCurrentQuestion();
+      }
+    });
+
+    document.getElementById('btnNextQuestion').addEventListener('click', () => {
+      if (currentQuestionIndex < EXAM_QUESTIONS.length - 1) {
+        currentQuestionIndex++;
+      } else {
+        currentQuestionIndex = 0; // Balik ke nomor 1
+      }
+      renderCurrentQuestion();
+    });
+
+    document.getElementById('btnFinishExam').addEventListener('click', () => {
+      let answered = 0;
+      EXAM_QUESTIONS.forEach(q => {
+        if (userAnswers[q.id] && userAnswers[q.id].length > 0) answered++;
+      });
+
+      document.getElementById('confirmStatsText').textContent = 
+        `Anda telah menjawab ${answered} dari ${EXAM_QUESTIONS.length} butir soal. Apakah Anda yakin ingin mengirim sekarang?`;
+      document.getElementById('modalConfirmFinish').classList.remove('hidden');
+    });
+
+    document.getElementById('btnCancelFinish').addEventListener('click', () => {
+      document.getElementById('modalConfirmFinish').classList.add('hidden');
+    });
+
+    document.getElementById('btnDoSubmitExam').addEventListener('click', () => {
+      document.getElementById('modalConfirmFinish').classList.add('hidden');
+      finishExam();
+    });
+
+    function finishExam() {
+      if (examCompleted) return;
+      examCompleted = true;
+      examActive = false;
+      clearInterval(timerInterval);
+
+      // Hitung Penilaian
+      let scoreCorrect = 0;
+
+      EXAM_QUESTIONS.forEach(q => {
+        const studentAns = (userAnswers[q.id] || []).slice().sort();
+        const correctAns = q.correct.slice().sort();
+
+        // Bandingkan array jawaban
+        const isMatch = studentAns.length === correctAns.length && 
+          studentAns.every((val, idx) => val === correctAns[idx]);
+
+        if (isMatch) {
+          scoreCorrect++;
+        }
+      });
+
+      // Konversi ke Skala 100
+      const finalScore = ((scoreCorrect / EXAM_QUESTIONS.length) * 100).toFixed(1);
+
+      // Tampilkan Hasil di Section Result
+      document.getElementById('sectionExamArena').classList.remove('grid');
+      document.getElementById('sectionExamArena').classList.add('hidden');
+      document.getElementById('sectionExamResult').classList.remove('hidden');
+
+      document.getElementById('resultStudentName').textContent = studentInfo.name;
+      document.getElementById('resultStudentClass').textContent = studentInfo.studentClass;
+      document.getElementById('resultStudentAbsen').textContent = studentInfo.absen;
+
+      document.getElementById('resultScoreCorrect').textContent = scoreCorrect;
+      document.getElementById('resultFinalGrade').textContent = finalScore;
+
+      // Status Kejujuran
+      const cheatElem = document.getElementById('resultCheatingStatus');
+      if (violationCount === 0) {
+        cheatElem.className = "text-xs font-bold px-3 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 inline-block mt-1";
+        cheatElem.textContent = "0 Pelanggaran (Sangat Jujur & Tertib)";
+      } else {
+        cheatElem.className = "text-xs font-bold px-3 py-1 rounded-md bg-rose-500/20 text-rose-300 border border-rose-500/30 inline-block mt-1";
+        cheatElem.textContent = `Tercatat ${violationCount}x Pindah Tab/Layar`;
+      }
+
+      // Kirim Data ke Google Sheet Jika URL Ada
+      sendDataToGoogleSheet({
+        name: studentInfo.name,
+        studentClass: studentInfo.studentClass,
+        absen: studentInfo.absen,
+        school: studentInfo.school,
+        scoreCorrect: scoreCorrect,
+        finalScore: finalScore,
+        violationCount: violationCount,
+        violationDetails: violationLogs.join(" | ") || "Tidak ada pelanggaran"
+      });
+
+      // Siapkan File Unduh CSV
+      setupCSVDownload(scoreCorrect, finalScore);
+    }
+
+    async function sendDataToGoogleSheet(payloadData) {
+      const statusText = document.getElementById('sheetSyncStatusText');
+      const noticeBox = document.getElementById('sheetSyncNotice');
+      
+      if (!googleSheetUrl) {
+        statusText.textContent = "Data ujian tersimpan di perangkat (Belum ada URL Google Sheet).";
+        return;
+      }
+
+      statusText.innerHTML = `<span class="inline-block animate-spin mr-2">⏳</span> Mengirim nilai & rekam jejak kejujuran ke Google Spreadsheet Guru...`;
+
+      try {
+        await fetch(googleSheetUrl, {
+          method: "POST",
+          mode: "no-cors", // Google Apps Script Web App standard mode
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify(payloadData)
+        });
+        
+        statusText.innerHTML = "✓ <strong>Berhasil Dikirim!</strong> Nilai, waktu, dan catatan kejujuran telah tersimpan rapi di Google Sheet Guru.";
+        if (noticeBox) {
+          noticeBox.className = "p-3 bg-emerald-50 rounded-xl text-xs text-emerald-800 border border-emerald-200 flex items-center justify-center gap-2 font-medium";
+        }
+      } catch (err) {
+        console.error("Gagal sinkronisasi:", err);
+        statusText.innerHTML = "Sinkronisasi cloud terhambat jaringan. Silakan klik <strong>Unduh Berkas Nilai (.CSV)</strong> sebagai cadangan.";
+        if (noticeBox) {
+          noticeBox.className = "p-3 bg-amber-50 rounded-xl text-xs text-amber-800 border border-amber-200 flex items-center justify-center gap-2 font-medium";
+        }
+      }
+    }
+
+    function setupCSVDownload(correctCount, finalScore) {
+      const btnDownload = document.getElementById('btnDownloadCSV');
+      btnDownload.onclick = () => {
+        let csvContent = "data:text/csv;charset=utf-8,";
+        csvContent += "Nama Siswa,Kelas,No Absen,Asal Sekolah,Benar (30),Nilai (100),Total Pelanggaran,Waktu Selesai\n";
+        csvContent += `"${studentInfo.name}","${studentInfo.studentClass}","${studentInfo.absen}","${studentInfo.school}",${correctCount},${finalScore},${violationCount},"${new Date().toLocaleString('id-ID')}"\n\n`;
+        
+        csvContent += "Nomor Soal,Kategori,Tipe,Jawaban Siswa,Kunci Jawaban,Status\n";
+        EXAM_QUESTIONS.forEach(q => {
+          const userA = (userAnswers[q.id] || []).join("-") || "KOSONG";
+          const correctA = q.correct.join("-");
+          const status = userA === correctA ? "BENAR" : "SALAH";
+          csvContent += `${q.id},"${q.category}","${q.type}","${userA}","${correctA}","${status}"\n`;
+        });
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", `ASTS_B_INDONESIA_${studentInfo.studentClass}_${studentInfo.absen}_${studentInfo.name.replace(/\s+/g, '_')}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      };
+    }
+
+    document.getElementById('btnOpenTeacherModal').addEventListener('click', () => {
+      document.getElementById('modalTeacherSettings').classList.remove('hidden');
+      document.getElementById('inputGoogleSheetWebhook').value = googleSheetUrl;
+    });
+
+    // Event Tombol Header Langsung Buka Modal Script GS
+    const btnOpenSheetScript = document.getElementById('btnOpenSheetScript');
+    if (btnOpenSheetScript) {
+      btnOpenSheetScript.addEventListener('click', () => {
+        document.getElementById('modalTeacherSettings').classList.remove('hidden');
+        document.getElementById('inputGoogleSheetWebhook').value = googleSheetUrl;
+        // Scroll ke script
+        const scriptBox = document.getElementById('scriptSnippet');
+        if (scriptBox) {
+          scriptBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          scriptBox.classList.add('ring-4', 'ring-amber-400');
+          setTimeout(() => scriptBox.classList.remove('ring-4', 'ring-amber-400'), 1500);
+        }
+      });
+    }
+
+    document.getElementById('btnCloseTeacherModal').addEventListener('click', () => {
+      document.getElementById('modalTeacherSettings').classList.add('hidden');
+    });
+
+    document.getElementById('btnSaveTeacherSettings').addEventListener('click', () => {
+      const val = document.getElementById('inputGoogleSheetWebhook').value.trim();
+      googleSheetUrl = val;
+
+      const alertElem = document.getElementById('saveSettingsAlert');
+      alertElem.classList.remove('hidden');
+      setTimeout(() => {
+        alertElem.classList.add('hidden');
+        document.getElementById('modalTeacherSettings').classList.add('hidden');
+      }, 1200);
+    });
+
+    document.getElementById('btnCopyAppsScript').addEventListener('click', () => {
+      const textarea = document.getElementById('scriptSnippet');
+      textarea.select();
+      document.execCommand('copy');
+      
+      const copyBtn = document.getElementById('btnCopyAppsScript');
+      const originalText = copyBtn.textContent;
+      copyBtn.textContent = "Tersalin!";
+      setTimeout(() => {
+        copyBtn.textContent = originalText;
+      }, 2000);
+    });
+
+    // Dismiss Peringatan Alarm
+    document.getElementById('btnDismissViolation').addEventListener('click', () => {
+      document.getElementById('modalViolation').classList.add('hidden');
+      requestFullscreenLock();
+    });
+
+    function escapeHtml(text) {
+      const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      };
+      return text.replace(/[&<>"']/g, function(m) { return map[m]; });
+    }
+
+    function showCustomNotice(msg) {
+      const notice = document.createElement('div');
+      notice.className = "fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-xl text-sm font-semibold border border-slate-700 flex items-center gap-2 animate-pulse";
+      notice.innerHTML = `<svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg> <span>${msg}</span>`;
+      document.body.appendChild(notice);
+      setTimeout(() => {
+        notice.remove();
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
